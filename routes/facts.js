@@ -2,7 +2,7 @@
 let express = require('express')
 let router = express.Router()
 
-let stateData = require('./state.json')
+let stateData = require('./state_fact.json')
 
 router.get('/about', function(req, res, next) {
     return res.json({
