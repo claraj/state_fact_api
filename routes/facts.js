@@ -6,7 +6,7 @@ let stateData = require('./state_fact.json')
 
 router.get('/about', function(req, res, next) {
     return res.json({
-        'about': 'A state fact API to demonstrate some Express concepts, using state facts from Infoplease.'
+        'about': 'A state fact API to demonstrate some Express concepts.'
     })
 })
 
