@@ -4,6 +4,13 @@ let router = express.Router()
 
 let stateData = require('./state_fact.json')
 
+// Permit requests from fetch requests in browsers 
+router.use(function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    next()
+})
+
+
 router.get('/about', function(req, res, next) {
     return res.json({
         'about': 'A state fact API to demonstrate some Express concepts.'
@@ -32,6 +39,19 @@ router.get('/fact/:stateName', function(req, res, next){
     You'd obviously provide more useful info in the message.
     You may have an error object, for example, from Sequelize, that you can pass to the error handler. 
     */
+})
+
+router.get('/fact/letter/:letter', function(req, res, next) {
+    let initial = req.params.letter 
+    let states = {}
+    for (state in stateData) {
+        if (state.startsWith(initial)) {
+            states[state] =  stateData[state]
+        }
+        
+    }
+    res.json(states)
+    // let states = stateData.filter( sd => sd.
 })
 
 module.exports = router
