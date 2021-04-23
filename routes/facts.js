@@ -18,6 +18,7 @@ router.get('/about', function(req, res, next) {
 })
 
 router.get('/state-list', function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*')
     let stateNames = Object.keys(stateData)  // array of all the keys from the object
     res.json(stateNames)
 })
