@@ -6,7 +6,7 @@ let stateData = require('./state_fact.json')
 
 // Permit requests from fetch requests in browsers 
 router.use(function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*')
+    res.set('Access-Control-Allow-Origin', '*')
     next()
 })
 
@@ -18,7 +18,6 @@ router.get('/about', function(req, res, next) {
 })
 
 router.get('/state-list', function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*')
     let stateNames = Object.keys(stateData)  // array of all the keys from the object
     return res.json(stateNames)
 })
