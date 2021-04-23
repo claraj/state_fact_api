@@ -18,7 +18,6 @@ router.get('/about', function(req, res, next) {
 })
 
 router.get('/state-list', function(req, res, next) {
-    res.set('Access-Control-Allow-Origin', '*')
     let stateNames = Object.keys(stateData)  // array of all the keys from the object
     return res.json(stateNames)
 })
@@ -27,7 +26,7 @@ router.get('/state-list', function(req, res, next) {
 // /fact/qwerty responds with 404 State Not Found 
 router.get('/fact/:stateName', function(req, res, next){
     let stateName = req.params.stateName 
-    let fact = 'This state is home to ' + stateData[stateName]
+    let fact = stateData[stateName]
     if (fact) {
         res.json({ name: stateName, fact: fact })
     } else {
